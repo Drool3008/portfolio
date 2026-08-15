@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Award, ExternalLink } from "lucide-react";
+import { Award, ArrowUpRight } from "lucide-react";
 import { achievements } from "@/lib/achievements";
 
 const ease = [0.22, 1, 0.36, 1] as [number, number, number, number];
@@ -24,41 +24,63 @@ export default function Achievements() {
         </h2>
       </div>
 
-      <ul ref={ref} className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <ul ref={ref} className="grid grid-cols-1 gap-4">
         {achievements.map((a, i) => (
           <motion.li
             key={a.title}
             initial={{ opacity: 0, y: 28 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 28 }}
             transition={{ duration: 0.6, ease, delay: i * 0.1 }}
-            className="group list-none rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[var(--foreground)]/40 hover:shadow-md"
+            className="group list-none rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6 md:p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[var(--foreground)]/40 hover:shadow-md"
           >
             <div className="flex items-start gap-4">
               <div className="w-fit rounded-lg border border-[var(--border)] bg-[var(--muted)] p-2.5 text-[var(--foreground)]">
                 <Award className="h-5 w-5" />
               </div>
               <div className="flex-1">
-                <h3 className="text-lg font-semibold text-[var(--foreground)] leading-snug">
+                <h3 className="text-lg md:text-xl font-semibold text-[var(--foreground)] leading-snug">
                   <span className="bg-[linear-gradient(var(--accent),var(--accent))] bg-[length:0%_2px] bg-no-repeat bg-[position:0_100%] pb-0.5 transition-[background-size] duration-300 group-hover:bg-[length:100%_2px]">
                     {a.title}
                   </span>
                 </h3>
                 {(a.org || a.date) && (
-                  <p className="text-xs text-[var(--muted-foreground)] mt-0.5">
+                  <p className="text-xs text-[var(--muted-foreground)] mt-1">
                     {[a.org, a.date].filter(Boolean).join(" · ")}
                   </p>
                 )}
-                <p className="text-sm text-[var(--muted-foreground)] leading-relaxed mt-3">
+                <p className="text-sm text-[var(--muted-foreground)] leading-relaxed mt-3 max-w-3xl">
                   {a.blurb}
                 </p>
+
+                {a.wins && (
+                  <div className="mt-5 grid gap-3 sm:grid-cols-3">
+                    {a.wins.map((w) => (
+                      <div
+                        key={w.label}
+                        className="rounded-xl border border-[var(--border)] bg-[var(--muted)]/50 p-4"
+                      >
+                        <p className="text-sm font-semibold text-[var(--foreground)] leading-snug">
+                          {w.label}
+                        </p>
+                        {w.detail && (
+                          <p className="text-xs text-[var(--muted-foreground)] mt-1">
+                            {w.detail}
+                          </p>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                )}
+
                 {a.link && (
                   <a
                     href={a.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs font-medium text-[var(--foreground)] hover:opacity-70 transition-opacity mt-4"
+                    className="inline-flex items-center gap-1.5 mt-6 text-sm font-medium text-[var(--foreground)] hover:opacity-70 transition-opacity"
                   >
-                    <ExternalLink className="w-3.5 h-3.5" /> View
+                    {a.linkLabel ?? "View"}
+                    <ArrowUpRight className="w-4 h-4" />
                   </a>
                 )}
               </div>

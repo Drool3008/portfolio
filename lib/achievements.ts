@@ -3,19 +3,24 @@ export type Achievement = {
   org?: string;
   date?: string;
   blurb: string;
+  wins?: { label: string; detail?: string }[];
   link?: string;
+  linkLabel?: string;
 };
 
-// ponytail: "Startup Aid" details are a PLACEHOLDER. LinkedIn is auth-gated and
-// the reposted post could not be fetched. Replace org/date/blurb/link with the
-// real content, or send Dhawal's post text and it gets wired in.
 export const achievements: Achievement[] = [
   {
-    title: "Startup Aid",
-    org: "‹ add org / event ›",
-    date: "‹ add date ›",
+    title: "Startup Aid 2026 — 2nd Overall",
+    org: "E-Cell, IIIT Hyderabad",
+    date: "40-day sprint · 2026",
     blurb:
-      "‹ Placeholder — paste the details from your reposted “Startup Aid” LinkedIn post here: what it was, your role, and the outcome worth showcasing. ›",
-    link: "https://www.linkedin.com/in/dhawal-pawanarkar-348003177/",
+      "A 40-day entrepreneurship sprint with 239 participants across 66 teams. Our team placed 2nd overall and won across multiple challenges. Built with Aasritha Kalluri and Gargi Saini.",
+    wins: [
+      { label: "Final Pitch Showcase", detail: "2nd Place · ₹50,000" },
+      { label: "Final Idea & Field Study", detail: "Challenge 1B · ₹10,000" },
+      { label: "Brand-A-Thon (Branding)", detail: "Challenge 3 · ₹10,000" },
+    ],
+    link: "https://keshavdubey.framer.website/portfolio/from-idea-to-pitch-in-40-days",
+    linkLabel: "Read the case study",
   },
 ];
