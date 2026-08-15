@@ -32,28 +32,17 @@ export default function About() {
           {...anim(0.1)}
           className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] font-bold text-[var(--foreground)] mb-8 max-w-4xl tracking-tight leading-[1.1]"
         >
-          Engineer by training, developer by build.
+          Part developer, part product person.
         </motion.h2>
 
         <motion.p
           {...anim(0.2)}
-          className="text-base text-[var(--muted-foreground)] leading-relaxed max-w-2xl mb-4"
-        >
-          I&apos;m a developer with an Instrumentation &amp; Control engineering
-          background, now doing an M.Tech in Product Design &amp; Management at
-          IIIT Hyderabad. I build full-stack web apps &mdash; mostly around Node,
-          React, and databases &mdash; and care about shipping things people
-          actually use.
-        </motion.p>
-
-        <motion.p
-          {...anim(0.3)}
           className="text-base text-[var(--muted-foreground)] leading-relaxed max-w-2xl mb-12"
         >
-          Recently I&apos;ve worked product-side too, as a Technical Product Intern
-          and Product Analyst &mdash; running research and turning it into roadmap
-          decisions. I like sitting where engineering meets product: understanding
-          why we&apos;re building something, then building it.
+          I&apos;m a full-stack developer who also works product-side. I build web
+          apps with Node, React, and databases, and do the research, strategy, and
+          roadmap work that decides what to build. Comfortable moving between
+          writing code and shaping the product around it.
         </motion.p>
 
         <motion.div {...anim(0.4)} className="grid gap-4 sm:grid-cols-2 max-w-3xl">
